@@ -954,6 +954,23 @@ const user = await User.find(1)
 await user.cars().sync([mercedes.id])
 ----
 
+The `sync` method accepts an optional callback receiving the `pivotModel` instance, allowing you to set extra properties on a pivot table if required (just as you can do with `attach`):
+
+[source, js]
+----
+const mercedes = await Car.findBy('reg_no', '39020103')
+const audi = await Car.findBy('reg_no', '99001020')
+
+const user = await User.find(1)
+const cars = [mercedes.id, audi.id]
+
+await user.cars().sync(cars, (row) => {
+  if (row.car_id === mercedes.id) {
+    row.is_current_owner = true
+  }
+})
+----
+
 ==== update
 The `update` method bulk updates queried rows.
 
