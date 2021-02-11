@@ -45,14 +45,14 @@ Route.post('upload', async ({ request }) => {
 ----
 
 [ol-spaced]
-1. The `request.file` method accepts two arguments (a *field name* and *a validation object* to apply to the uploaded file), and returns a link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.js[File, window="_blank"] instance.
+1. The `request.file` method accepts two arguments (a *field name* and *a validation object* to apply to the uploaded file), and returns a link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.ts[File, window="_blank"] instance.
 2. Next, we call the `profilePic.move` method which attempts to move the file to the defined directory (in this case, called with options to save the file with a new *name* and to *overwrite* the file if needed).
 3. Finally, we check whether the move operation was successful by calling the `profilePic.moved()` method (returning errors if any were found).
 
 == Multiple File Uploads
 AdonisJs makes uploading multiple files as simple as uploading a single file.
 
-When multiple files are uploaded together, `request.file` returns a link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/FileJar.js[FileJar, window="_blank"] instance instead of a link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.js[File, window="_blank"] instance:
+When multiple files are uploaded together, `request.file` returns a link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/FileJar.js[FileJar, window="_blank"] instance instead of a link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.ts[File, window="_blank"] instance:
 
 [source, edge]
 ----
@@ -156,7 +156,7 @@ await avatar.move()
 
 == Error Types
 
-When upload validation fails, the link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.js[File, window="_blank"] `error` method returns an object containing the failed `fieldName`, original `clientName`, an error `message`, and the rule `type` that triggered the error.
+When upload validation fails, the link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.ts[File, window="_blank"] `error` method returns an object containing the failed `fieldName`, original `clientName`, an error `message`, and the rule `type` that triggered the error.
 
 NOTE: The link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/FileJar.js[FileJar, window="_blank"] `errors` method returns an *array* of errors.
 
@@ -187,7 +187,7 @@ A few example error objects are list below.
 ----
 
 == File Properties
-The following file properties can be accessed on the link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.js[File, window="_blank"] instance:
+The following file properties can be accessed on the link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.ts[File, window="_blank"] instance:
 
 [role="resource-table", options="header", cols="45, 20, 20, 15"]
 |====
@@ -224,7 +224,7 @@ class StoreUser {
 module.exports = StoreUser
 ----
 
-1. The `file` rule ensures the `avatar` field is a valid link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.js[File].
+1. The `file` rule ensures the `avatar` field is a valid link:https://github.com/adonisjs/adonis-bodyparser/blob/develop/src/Multipart/File.ts[File].
 2. The `file_ext` rule defines the `extnames` allowed for the file.
 3. The `file_size` rule defines the maximum `size` for the file.
 4. The `file_types` rule defines the `types` allowed for the file.
